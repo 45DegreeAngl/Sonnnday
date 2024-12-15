@@ -1,7 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://yg5fqtrj22gk"]
 
 [ext_resource type="Script" path="res://character/floating_char.gd" id="1_k83ya"]
-[ext_resource type="Texture2D" uid="uid://dx8xg3vc55x46" path="res://icon.svg" id="2_e631b"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fxvtl"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjf1m"]
 radius = 6.08276
@@ -26,3 +30,5 @@ zoom = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectDamageArea"]
 shape = SubResource("CircleShape2D_o2lgx")
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_fxvtl")
