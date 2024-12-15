@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.255659, 0.255659, 0.255659, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="JoinLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -33,4 +33,47 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center][rainbow]Press A to join![/rainbow][/center]"
+fit_content = true
+
+[node name="PlayerLabels" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -125.635
+offset_bottom = 430.365
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerLabel1" type="RichTextLabel" parent="PlayerLabels"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center][rainbow]Player 1[/rainbow][/center]"
+fit_content = true
+
+[node name="PlayerLabel2" type="RichTextLabel" parent="PlayerLabels"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center][rainbow]Player 2[/rainbow][/center]"
+fit_content = true
+
+[node name="PlayerLabel3" type="RichTextLabel" parent="PlayerLabels"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center][rainbow]Player 3[/rainbow][/center]"
+fit_content = true
+
+[node name="PlayerLabel4" type="RichTextLabel" parent="PlayerLabels"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center][rainbow]Player 4[/rainbow][/center]"
 fit_content = true
