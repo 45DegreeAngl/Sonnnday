@@ -16,6 +16,7 @@ func _ready() -> void:
 			if cur_active_weapon_indx<0:
 				cur_active_weapon_indx = child.get_index()
 			child.monitoring = false
+			child.area_entered.connect(_on_victim_entered)
 
 ##re enable the selected weapon
 func change_weapon(index):
@@ -25,7 +26,7 @@ func change_weapon(index):
 		temp_child.monitoring = true
 
 ##deal the damage to the other player
-func _on_area_entered(area: Area2D) -> void:
+func _on_victim_entered(area: Area2D) -> void:
 	if area.has_method("damage"):
 		var atk:Attack = weapons_array[cur_active_weapon_indx].atk
 		
