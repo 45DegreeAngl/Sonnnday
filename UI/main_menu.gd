@@ -1,14 +1,13 @@
 extends Control
 
-@onready var playerLabel1 = $'PlayerLabels/PlayerLabel1'
-@onready var playerLabel2 = $'PlayerLabels/PlayerLabel2'
-@onready var playerLabel3 = $'PlayerLabels/PlayerLabel3'
-@onready var playerLabel4 = $'PlayerLabels/PlayerLabel4'
+@export var startButton : Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	startButton.pressed.connect(on_start_pressed)
 
+func on_start_pressed() -> void:
+	$'/root/SceneManager'.change_scenes("level1")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
