@@ -1,34 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://yg5fqtrj22gk"]
+[gd_scene load_steps=6 format=3 uid="uid://dgjcdy4p8c47s"]
 
 [ext_resource type="Script" path="res://character/floating_char.gd" id="1_k83ya"]
+[ext_resource type="Texture2D" uid="uid://dx8xg3vc55x46" path="res://icon.svg" id="1_nlnro"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fxvtl"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_q10bd"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u7hht"]
+radius = 7.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nj5na"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xjf1m"]
-radius = 6.08276
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_o2lgx"]
-radius = 6.0
-
-[node name="Floating" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_k83ya")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_e631b")
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("1_nlnro")
 
-[node name="PlayerCollider" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_xjf1m")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q10bd")
 
-[node name="PlayerCamera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+[node name="DamageArea2D" type="Area2D" parent="."]
 
-[node name="DetectDamageArea" type="Area2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D"]
+shape = SubResource("CircleShape2D_u7hht")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectDamageArea"]
-shape = SubResource("CircleShape2D_o2lgx")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_fxvtl")
+replication_config = SubResource("SceneReplicationConfig_nj5na")
