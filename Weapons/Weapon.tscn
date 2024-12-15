@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cl2ul5bjqietm"]
+[gd_scene load_steps=7 format=3 uid="uid://cl2ul5bjqietm"]
 
 [ext_resource type="Script" path="res://Weapons/weapon.gd" id="1_umnna"]
 [ext_resource type="PackedScene" uid="uid://dgjcdy4p8c47s" path="res://character/player.tscn" id="2_cr11f"]
+[ext_resource type="Script" path="res://interact/weapon_res.gd" id="2_ko6j3"]
+
+[sub_resource type="Resource" id="Resource_cx4qj"]
+script = ExtResource("2_ko6j3")
+wep_name = "Sword"
+dmg_stat = 5.0
+knck_stat = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fo2y2"]
 size = Vector2(78, 14)
@@ -11,6 +18,7 @@ radius = 20.0
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_umnna")
+weapons_array = Array[ExtResource("2_ko6j3")]([SubResource("Resource_cx4qj")])
 
 [node name="Sword" type="Area2D" parent="."]
 monitoring = false
@@ -25,6 +33,6 @@ modulate = Color(1, 1, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mace"]
 shape = SubResource("CircleShape2D_gwbx2")
 
-[node name="Direction" type="RayCast2D" parent="."]
-
 [node name="Player" parent="." instance=ExtResource("2_cr11f")]
+
+[node name="atk_dir" type="RayCast2D" parent="."]
