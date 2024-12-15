@@ -1,15 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cst5ea538ve2r"]
+[gd_scene load_steps=11 format=3 uid="uid://cst5ea538ve2r"]
 
-[ext_resource type="PackedScene" uid="uid://yg5fqtrj22gk" path="res://character/player.tscn" id="1_ejx0f"]
+[ext_resource type="PackedScene" uid="uid://dgjcdy4p8c47s" path="res://character/player.tscn" id="1_ejx0f"]
 [ext_resource type="Texture2D" uid="uid://dx8xg3vc55x46" path="res://icon.svg" id="2_1nq3v"]
 [ext_resource type="Script" path="res://interact/hurtbox.gd" id="3_buiek"]
 [ext_resource type="Script" path="res://interact/health.gd" id="4_6m2vv"]
 [ext_resource type="Script" path="res://interact/knockback.gd" id="5_w0jat"]
 [ext_resource type="PackedScene" uid="uid://cpn3lyw1irkqd" path="res://General/hitbox.tscn" id="6_4htvd"]
 [ext_resource type="Script" path="res://General/Braindead.gd" id="7_iyu57"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wraby"]
-size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_361pa"]
 
@@ -28,28 +25,6 @@ color = Color(0.252028, 0.252028, 0.252028, 1)
 
 [node name="Floating" parent="." instance=ExtResource("1_ejx0f")]
 position = Vector2(264, 460)
-
-[node name="Sprite2D" type="Sprite2D" parent="Floating"]
-texture = ExtResource("2_1nq3v")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floating"]
-shape = SubResource("RectangleShape2D_wraby")
-
-[node name="Hurtbox" type="Area2D" parent="Floating" node_paths=PackedStringArray("health_component", "knockback_component")]
-modulate = Color(1, 0, 1, 1)
-script = ExtResource("3_buiek")
-health_component = NodePath("../Health")
-knockback_component = NodePath("../Knockback")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floating/Hurtbox"]
-shape = SubResource("RectangleShape2D_wraby")
-
-[node name="Health" type="Node" parent="Floating"]
-script = ExtResource("4_6m2vv")
-
-[node name="Knockback" type="Node" parent="Floating" node_paths=PackedStringArray("entity")]
-script = ExtResource("5_w0jat")
-entity = NodePath("..")
 
 [node name="Hitbox" parent="Floating" instance=ExtResource("6_4htvd")]
 
