@@ -4,6 +4,7 @@ const SPEED = 300.0
 ##how icy the floor is for stopping movement
 const STOP_FACTOR = 4
 var can_move : bool = true
+@onready var inputManager : InputManager = $InputManager
 
 
 func _physics_process(_delta: float) -> void:
@@ -17,12 +18,13 @@ func _physics_process(_delta: float) -> void:
 		return
 	# Get the input direction and handle the movement/deceleration.
 	var direction : Vector2 
-	match control_type:
-		0:
-			direction = Input.get_vector("A", "D", "W", "S")
-		1:
-			direction = joy_pad_LStick
-	direction = direction.normalized()
+	#match control_type:
+		#0:
+			#direction = Input.get_vector("A", "D", "W", "S")
+		#1:
+			#direction = joy_pad_LStick
+	#direction = direction.normalized()
+	direction = inputManager.moveDirection
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.y = direction.y * SPEED

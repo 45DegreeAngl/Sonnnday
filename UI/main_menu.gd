@@ -23,8 +23,8 @@ func _input(event: InputEvent) -> void:
 		if(not Globals.get_player_from_device(1)):
 			Globals.players.append(player_data.create(1))
 	if(Input.is_action_pressed("a_p3")):
-		if(not Globals.get_player_from_device(1)):
-			Globals.players.append(player_data.create(1))
+		if(not Globals.get_player_from_device(2)):
+			Globals.players.append(player_data.create(2))
 	if(Input.is_action_pressed("a_p4")):
-		if(not Globals.get_player_from_device(1)):
-			Globals.players.append(player_data.create(1))
+		if(not Globals.get_player_from_device(3)):
+			Globals.players.append(player_data.create(3))

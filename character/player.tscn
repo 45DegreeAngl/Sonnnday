@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgjcdy4p8c47s"]
+[gd_scene load_steps=9 format=3 uid="uid://dgjcdy4p8c47s"]
 
 [ext_resource type="Script" path="res://character/floating_char.gd" id="1_k83ya"]
 [ext_resource type="Texture2D" uid="uid://dx8xg3vc55x46" path="res://icon.svg" id="1_nlnro"]
 [ext_resource type="Script" path="res://interact/health.gd" id="3_wkpv0"]
 [ext_resource type="Script" path="res://interact/knockback.gd" id="4_66tnv"]
 [ext_resource type="Script" path="res://interact/hurtbox.gd" id="5_6how6"]
+[ext_resource type="Script" path="res://character/input_manager.gd" id="6_07v0m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q10bd"]
 radius = 7.0
@@ -43,5 +44,8 @@ hazard_delay_timer = NodePath("../HazardDelayTimer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_1ta40")
+
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource("6_07v0m")
 
 [connection signal="timeout" from="HazardDelayTimer" to="Hurtbox" method="_on_hazard_delay_timer_timeout"]
