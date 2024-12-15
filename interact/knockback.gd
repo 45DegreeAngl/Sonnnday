@@ -3,7 +3,7 @@ class_name Knockback
 
 @export var entity : Node
 
-@export_range(0,1) var susceptibility : float
+@export_range(0,1) var susceptibility : float = 1
 func deal_knockback(attack : Attack):
 	if !entity.has_method("get_velocity"):
 		return
