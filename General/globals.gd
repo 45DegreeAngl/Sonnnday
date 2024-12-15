@@ -1,6 +1,7 @@
 extends Node
 
 class_name globals
+var level1 : PackedScene = preload("res://General/Levels/level_1.tscn")
 
 var players : Array
 
