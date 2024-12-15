@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export_enum("keyboard","controller","mouse") var control_type : int = 0
+@export_enum("keyboard","controller") var control_type : int = 0
 const SPEED = 300.0
 ##how icy the floor is for stopping movement
 const STOP_FACTOR = 4
@@ -21,12 +21,6 @@ func _physics_process(_delta: float) -> void:
 			direction = Input.get_vector("A", "D", "W", "S")
 		1:
 			direction = joy_pad_LStick
-		2:
-			direction = (get_global_mouse_position() - global_position)
-			if direction.length()>6:
-				direction = direction.normalized()
-			else:
-				direction = Vector2.ZERO
 	
 	if direction:
 		velocity.x = direction.x * SPEED
