@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://glovombt45nn"]
+
+[ext_resource type="Script" path="res://UI/main_menu.gd" id="1_owqld"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_owqld")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Host" type="Button" parent="."]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 166.0
+offset_right = 577.0
+offset_bottom = 197.0
+scale = Vector2(3, 3)
+text = "Host
+"
+
+[node name="Join" type="Button" parent="."]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 415.0
+offset_right = 568.0
+offset_bottom = 446.0
+scale = Vector2(3, 3)
+text = "Join
+"
+
+[node name="Join Code" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.462674
+anchor_top = 0.527778
+anchor_right = 0.844618
+anchor_bottom = 0.623457
+offset_right = -220.0
+offset_bottom = -31.0
+scale = Vector2(2, 2)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
+[connection signal="text_changed" from="Join Code" to="." method="_on_join_code_text_changed"]
