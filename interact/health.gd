@@ -13,6 +13,12 @@ func damage(attack : Attack):
 	if health <= 0:
 		die()
 
+func direct_damage(dmg:float):
+	health -= dmg
+	
+	if health <= 0:
+		die()
+
 func die():
 #	implement component based death behaviors :D
 	get_parent().queue_free()
