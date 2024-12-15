@@ -11,9 +11,9 @@ func _ready() -> void:
 	self.body_entered.connect(hurtbox_body_entered)
 
 func hazard_damage():
-	var map_pos = hazardmap.local_to_map(hazardmap.to_local(global_position))
-	print(hazardmap.get_cell_tile_data(map_pos).get_custom_data("damage"))
-	health_component.direct_damage(health_component.max_health * hazardmap.get_cell_tile_data(map_pos).get_custom_data("damage"))
+	var map_pos = hazardmap.local_to_map(hazardmap.to_local(global_position)) #finds position in tile coordinates
+	#print(hazardmap.get_cell_tile_data(map_pos).get_custom_data("damage")) show how much damage a hazard did
+	health_component.direct_damage(health_component.max_health * hazardmap.get_cell_tile_data(map_pos).get_custom_data("damage")) #deals damage based on percent of max health
 	hazard_delay_timer.start()
 
 func hurtbox_body_entered(body):

@@ -12,8 +12,9 @@ radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ta40"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_k83ya")
+health = NodePath("Health")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.12, 0.12)

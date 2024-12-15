@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @export_enum("keyboard","controller") var control_type : int = 0
+@export var health : Health
 const SPEED = 300.0
 ##how icy the floor is for stopping movement
 const STOP_FACTOR = 4
