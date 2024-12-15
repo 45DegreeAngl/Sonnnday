@@ -21,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 			direction = Input.get_vector("A", "D", "W", "S")
 		1:
 			direction = joy_pad_LStick
-	
+	direction = direction.normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.y = direction.y * SPEED
