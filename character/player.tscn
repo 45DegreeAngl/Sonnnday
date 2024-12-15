@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgjcdy4p8c47s"]
+[gd_scene load_steps=5 format=3 uid="uid://dgjcdy4p8c47s"]
 
 [ext_resource type="Script" path="res://character/floating_char.gd" id="1_k83ya"]
 [ext_resource type="Texture2D" uid="uid://dx8xg3vc55x46" path="res://icon.svg" id="1_nlnro"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q10bd"]
-radius = 7.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_u7hht"]
 radius = 7.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nj5na"]
@@ -23,11 +20,6 @@ texture = ExtResource("1_nlnro")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_q10bd")
-
-[node name="DamageArea2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D"]
-shape = SubResource("CircleShape2D_u7hht")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_nj5na")
