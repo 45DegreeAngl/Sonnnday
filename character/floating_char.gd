@@ -5,6 +5,7 @@ const SPEED = 300.0
 const STOP_FACTOR = 4
 var can_move : bool = true
 
+
 func _physics_process(_delta: float) -> void:
 	if !is_multiplayer_authority():
 		return
