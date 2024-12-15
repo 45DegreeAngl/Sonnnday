@@ -27,6 +27,8 @@ color = Color(0.252028, 0.252028, 0.252028, 1)
 position = Vector2(264, 460)
 
 [node name="Hitbox" parent="Floating" instance=ExtResource("6_4htvd")]
+knockback_dir = Vector2(1, 0)
+knockback_force = 1000.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Floating/Hitbox"]
 shape = SubResource("RectangleShape2D_361pa")
