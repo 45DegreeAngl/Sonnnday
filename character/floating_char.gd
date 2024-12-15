@@ -33,7 +33,7 @@ func _physics_process(_delta: float) -> void:
 
 ##updates the can_move value to the mouse captured
 func update_can_move():
-	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED or control_type==2:
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		can_move = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
