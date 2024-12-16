@@ -52,7 +52,6 @@ func update_can_move():
 		can_move = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-
 func _on_dash_timer_timeout() -> void:
 	dashing = false
 
