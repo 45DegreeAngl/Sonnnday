@@ -14,6 +14,7 @@ var current_dashes = 2
 @export var dash_recharge : Timer
 @onready var inputManager : InputManager = $InputManager
 @onready var sprite: Sprite2D = $"Sprite2D"
+@onready var weapon: Node2D = $Weapon
 
 func _physics_process(_delta: float) -> void:
 	if !is_multiplayer_authority():
@@ -28,7 +29,7 @@ func _physics_process(_delta: float) -> void:
 	var direction : Vector2 
 	direction = inputManager.moveDirection
 	sprite.rotation = inputManager.lookDirection.angle() - PI/2
-	
+	weapon.update_atk_vector(Vector2.ONE.rotated(inputManager.lookDirection.angle()))
 	if dash_timer.is_stopped():
 		if direction:
 			velocity = velocity.move_toward(direction * SPEED, SPEED/STOP_FACTOR)
@@ -37,13 +38,15 @@ func _physics_process(_delta: float) -> void:
 			velocity.y = move_toward(velocity.y, 0, SPEED/STOP_FACTOR)
 	
 	#apply dash
-	if inputManager.leftTriggerPressed && can_dash:
+	if inputManager.leftTriggerJustPressed && can_dash:
 		current_dashes -= 1
 		velocity += inputManager.lookDirection*DASH
 		dash_timer.start()
 		dashing = true
 		if dash_recharge.is_stopped():
 			dash_recharge.start()
+	if inputManager.rightTriggerJustPressed:
+		weapon.attack()
 	move_and_slide()
 
 ##updates the can_move value to the mouse captured
@@ -54,7 +57,6 @@ func update_can_move():
 
 func _on_dash_timer_timeout() -> void:
 	dashing = false
-
 
 func _on_dash_recharge_timer_timeout() -> void:
 	if current_dashes < max_dashes:

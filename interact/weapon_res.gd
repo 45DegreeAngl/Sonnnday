@@ -6,9 +6,5 @@ class_name Weapon
 @export var dmg_stat:float
 @export var knck_stat:float
 @export var cool_stat:float = 0.1
-var atk:Attack
-
-func _ready()->void:
-	atk = Attack.new()
-	atk.attack_damage = dmg_stat
-	atk.knockback_force = knck_stat
+@export var atk_frame_dur:float = 0.05
+@export var knockback_dir:Vector2 = Vector2.ZERO

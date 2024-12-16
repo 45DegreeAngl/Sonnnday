@@ -7,7 +7,7 @@ var cur_active_weapon_indx : int = -1
 var knockback_dir:Vector2
 @onready var atk_dir: RayCast2D = $atk_dir
 @onready var cooldown: Timer = $Cooldown
-
+@onready var attack_frames: Timer = $AttackFrames
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,13 +24,15 @@ func change_weapon(index):
 	cur_active_weapon_indx = index
 	cooldown.wait_time = weapons_array[cur_active_weapon_indx].cool_stat
 
-
-
 ##deal the damage to the other player
 func _on_victim_entered(area: Area2D) -> void:
+	
 	if area.has_method("damage"):
-		var atk:Attack = weapons_array[cur_active_weapon_indx].atk
-		
+		var atk:Attack = Attack.new()
+		var wep:Weapon = weapons_array[cur_active_weapon_indx]
+		atk.attack_damage = wep.dmg_stat
+		atk.knockback_force = wep.knck_stat
+		atk.knockback_direction_2d = wep.knockback_dir
 		atk.knockback_direction_2d = atk_dir.target_position.normalized() + atk.knockback_direction_2d
 		
 		area.damage(atk)
@@ -42,13 +44,21 @@ func update_atk_vector(balls:Vector2):
 
 func attack():
 	if !cooldown.is_stopped():
+		print("I cannot attack")
 		return
+	print("ATTACK")
 	var temp_child = get_child(cur_active_weapon_indx)
 	if temp_child is Area2D:
 		temp_child.monitoring = true
 		cooldown.start()
+		attack_frames.start()
 
 func _on_cooldown_timeout() -> void:
 	var temp_child = get_child(cur_active_weapon_indx)
 	if temp_child is Area2D:
 		temp_child.monitoring = true
+
+func _on_attack_frames_timeout() -> void:
+	var temp_child = get_child(cur_active_weapon_indx)
+	if temp_child is Area2D:
+		temp_child.monitoring = false
