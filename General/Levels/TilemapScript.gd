@@ -11,7 +11,9 @@ func _enter_tree() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	for playerAbilities in Globals.get_children():
+		for playerAbility in playerAbilities.get_children():
+			playerAbility.active = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
