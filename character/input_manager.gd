@@ -23,8 +23,13 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	moveDirection = joy_pad_LStick
 	lookDirection = joy_pad_RStick
-	leftTriggerJustPressed = Input.is_action_just_pressed("left_trigger_p"+str(deviceIndex))
-	rightTriggerJustPressed = Input.is_action_just_pressed("right_trigger_p"+str(deviceIndex))
+	#how to apply mouse inputs :<
+	if Globals.get_player_from_index(playerIndex).isKeyboardPlayer:
+		leftTriggerJustPressed = Input.is_action_just_pressed("right_trigger_kb")
+		rightTriggerJustPressed = Input.is_action_just_pressed("left_trigger_kb")
+	else:
+		leftTriggerJustPressed = Input.is_action_just_pressed("left_trigger_p"+str(deviceIndex))
+		rightTriggerJustPressed = Input.is_action_just_pressed("right_trigger_p"+str(deviceIndex))
 
 var joy_pad_LStick:Vector2 = Vector2.ZERO
 var joy_pad_RStick:Vector2 = Vector2.ZERO

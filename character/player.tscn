@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgjcdy4p8c47s"]
+[gd_scene load_steps=10 format=3 uid="uid://dgjcdy4p8c47s"]
 
 [ext_resource type="Script" path="res://character/floating_char.gd" id="1_k83ya"]
 [ext_resource type="Texture2D" uid="uid://b4gsattf5ad10" path="res://Assets/Character_1.png" id="2_elwag"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://interact/knockback.gd" id="4_66tnv"]
 [ext_resource type="Script" path="res://interact/hurtbox.gd" id="5_6how6"]
 [ext_resource type="Script" path="res://character/input_manager.gd" id="6_07v0m"]
+[ext_resource type="PackedScene" uid="uid://cl2ul5bjqietm" path="res://Weapons/Weapon.tscn" id="7_myalk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q10bd"]
 radius = 24.0
@@ -58,6 +59,8 @@ one_shot = true
 
 [node name="DashRechargeTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Weapon" parent="." instance=ExtResource("7_myalk")]
 
 [connection signal="timeout" from="HazardDelayTimer" to="Hurtbox" method="_on_hazard_delay_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
