@@ -20,7 +20,6 @@ func _process(delta: float) -> void:
 		explosion_shape.reparent(self)
 		dash_box_instance.queue_free()
 
-
 func dash_complete():
 	dash_box_instance = dash_box.instantiate()
 	player.add_child(dash_box_instance)

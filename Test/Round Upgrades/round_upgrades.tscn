@@ -19,3 +19,7 @@ explosion_shape = NodePath("ExplosionShape2D")
 
 [node name="ExplosionShape2D" type="CollisionShape2D" parent="DashBomb"]
 shape = SubResource("CircleShape2D_lqcqi")
+
+[node name="RandomStun" type="Node" parent="."]
+
+[node name="Node" type="Node" parent="."]
