@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 		var move_vert: float = Input.get_action_strength("move_down_KB") - Input.get_action_strength("move_up_KB")
 		moveDirection = Vector2(move_horz, move_vert).normalized()
 		
-		lookDirection = (get_parent().global_position - get_parent().get_global_mouse_position()).normalized()
+		lookDirection = (get_parent().get_global_mouse_position() - get_parent().global_position).normalized()
 	
 		aPressed = Input.is_action_pressed("a_KB")
 		bPressed = Input.is_action_pressed("b_KB")
@@ -37,8 +37,10 @@ func _process(delta: float) -> void:
 		moveDirection = Vector2(move_horz, move_vert).normalized()
 	
 		var look_horz: float = Input.get_action_strength("right_stick_right_p" + str(deviceIndex)) - Input.get_action_strength("right_stick_left_p" + str(deviceIndex))
-		var look_vert: float = Input.get_action_strength("right_stick_up_p" + str(deviceIndex)) - Input.get_action_strength("right_stick_down_p" + str(deviceIndex))
-		lookDirection = Vector2(look_horz, look_vert).normalized()
+		var look_vert: float = Input.get_action_strength("right_stick_down_p" + str(deviceIndex)) - Input.get_action_strength("right_stick_up_p" + str(deviceIndex))
+		var desiredLookDirection = Vector2(look_horz, look_vert).normalized()
+		if desiredLookDirection != Vector2.ZERO:
+			lookDirection = desiredLookDirection
 	
 		aPressed = Input.is_action_pressed("a_p" + str(deviceIndex))
 		bPressed = Input.is_action_pressed("b_p" + str(deviceIndex))
