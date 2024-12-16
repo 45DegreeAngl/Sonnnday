@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Globals="*res://General/globals.gd"
 Actions="res://General/actions.gd"
+Globals="*res://General/globals.tscn"
 
 [display]
 
@@ -232,3 +232,9 @@ right_stick_left_p4={
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":3,"axis":2,"axis_value":-1.0,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Collision"
+2d_physics/layer_2="Normal Attacks"
+2d_physics/layer_3="Tile Hazards"

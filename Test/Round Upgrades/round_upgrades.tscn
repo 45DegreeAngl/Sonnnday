@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmdk8bx3lu2c2"]
+
+[ext_resource type="Script" path="res://Test/Round Upgrades/RoundUpgrades.gd" id="1_kkuj0"]
+[ext_resource type="Script" path="res://Test/Round Upgrades/damageonmove.gd" id="2_1tr06"]
+
+[node name="RoundUpgrades" type="Node"]
+script = ExtResource("1_kkuj0")
+
+[node name="DamageOnMove" type="Node" parent="."]
+script = ExtResource("2_1tr06")

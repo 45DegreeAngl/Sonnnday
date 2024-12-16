@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 class_name globals
 var level1 : PackedScene = preload("res://General/Levels/level_1.tscn")

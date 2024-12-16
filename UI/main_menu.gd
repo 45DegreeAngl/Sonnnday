@@ -7,7 +7,7 @@ func _ready() -> void:
 	startButton.pressed.connect(on_start_pressed)
 
 func on_start_pressed() -> void:
-	$'/root/SceneManager'.change_scenes("level1")
+	$'/root/SceneManager'.change_scenes("powerselect")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7kg82lo41rat"]
+
+[ext_resource type="Script" path="res://UI/power_select.gd" id="1_e8juv"]
+[ext_resource type="ButtonGroup" uid="uid://d2tfwt6j5tmkc" path="res://UI/power_select.tres" id="2_70gdb"]
+
+[node name="Power Select" type="Control" node_paths=PackedStringArray("power1_button", "power2_button", "power3_button", "confirm")]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+script = ExtResource("1_e8juv")
+power1_button = NodePath("ColorRect/HBoxContainer/PanelContainer/Power1")
+power2_button = NodePath("ColorRect/HBoxContainer/PanelContainer2/Power2")
+power3_button = NodePath("ColorRect/HBoxContainer/PanelContainer3/Power3")
+confirm = NodePath("ColorRect/Confirm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1915.0
+offset_bottom = 1078.0
+color = Color(0.254902, 0.254902, 0.254902, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.233
+anchor_top = 0.334
+anchor_right = 0.767
+anchor_bottom = 0.625
+offset_left = -0.195007
+offset_top = -0.0520325
+offset_right = -0.805054
+offset_bottom = 0.25
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Power1" type="Button" parent="ColorRect/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+button_group = ExtResource("2_70gdb")
+text = "Take Damage on Walk"
+
+[node name="PanelContainer2" type="PanelContainer" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Power2" type="Button" parent="ColorRect/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+button_group = ExtResource("2_70gdb")
+text = "Test Button"
+
+[node name="PanelContainer3" type="PanelContainer" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Power3" type="Button" parent="ColorRect/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+button_group = ExtResource("2_70gdb")
+text = "Test Button 2"
+
+[node name="Confirm" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.406
+anchor_top = 0.677
+anchor_right = 0.594
+anchor_bottom = 0.805
+offset_left = -0.490051
+offset_top = 0.19397
+offset_right = 0.489868
+offset_bottom = 0.2099
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "Confirm"
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="toggled" from="ColorRect/HBoxContainer/PanelContainer/Power1" to="." method="_on_power_1_toggled"]
+[connection signal="toggled" from="ColorRect/HBoxContainer/PanelContainer2/Power2" to="." method="_on_power_2_toggled"]
+[connection signal="toggled" from="ColorRect/HBoxContainer/PanelContainer3/Power3" to="." method="_on_power_3_toggled"]
+[connection signal="pressed" from="ColorRect/Confirm" to="." method="_on_confirm_pressed"]
