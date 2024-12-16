@@ -7,10 +7,6 @@ func _ready() -> void:
 	change_scenes("menu")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func change_scenes(scene_name: String):
 	var scene = scenes.get(scene_name)
 	if scene:

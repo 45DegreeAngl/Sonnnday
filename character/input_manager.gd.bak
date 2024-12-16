@@ -23,10 +23,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	moveDirection = joy_pad_LStick
 	lookDirection = joy_pad_RStick
-	if joy_pad_LTrigger>0.3:
-		leftTriggerPressed = true
-	else:
-		leftTriggerPressed = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
@@ -75,7 +71,22 @@ func send_event(event:InputEvent):
 			5:#right trigger
 				joy_pad_LTrigger = event.axis_value
 		
-
+<<<<<<< Updated upstream
+		lookDirection = (get_parent().get_global_mouse_position() - get_parent().global_position).normalized()
+	
+		aPressed = Input.is_action_pressed("a_KB")
+		bPressed = Input.is_action_pressed("b_KB")
+	else:
+		moveDirection = Input.get_vector("move_left_p" + str(deviceIndex), "move_right_p" + str(deviceIndex), "move_up_p" + str(deviceIndex), "move_down_p" + str(deviceIndex)).normalized()
+	
+		var desiredLookDirection = Input.get_vector("right_stick_left_p" + str(deviceIndex), "right_stick_right_p" + str(deviceIndex), "right_stick_up_p" + str(deviceIndex), "right_stick_down_p" + str(deviceIndex)).normalized()
+		if desiredLookDirection != Vector2.ZERO:
+			lookDirection = desiredLookDirection
+	
+		aPressed = Input.is_action_pressed("a_p" + str(deviceIndex))
+		bPressed = Input.is_action_pressed("b_p" + str(deviceIndex))
+		leftTriggerPressed = Input.is_action_just_pressed("left_trigger_p"+str(deviceIndex))
+=======
 	elif event is InputEventJoypadButton:
 		var temp_bool = event.is_pressed()
 		match event.button_index:
@@ -83,3 +94,4 @@ func send_event(event:InputEvent):
 				aPressed = temp_bool
 			JOY_BUTTON_B:
 				bPressed = temp_bool
+>>>>>>> Stashed changes

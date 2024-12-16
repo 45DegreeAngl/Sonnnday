@@ -6,6 +6,7 @@ func _enter_tree() -> void:
 		var player_scene = load("res://character/player.tscn")
 		var player_instance = player_scene.instantiate()
 		player_instance.global_position = Vector2(i*64,0)
+		
 		add_child(player_instance)
 		Globals.players[i].player = player_instance
 
