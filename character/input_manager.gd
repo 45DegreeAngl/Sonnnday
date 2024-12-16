@@ -22,13 +22,23 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var move_horz: float = Input.get_action_strength("move_right_p" + str(deviceIndex)) - Input.get_action_strength("move_left_p" + str(deviceIndex))
-	var move_vert: float = Input.get_action_strength("move_down_p" + str(deviceIndex)) - Input.get_action_strength("move_up_p" + str(deviceIndex))
-	moveDirection = Vector2(move_horz, move_vert).normalized()
+	if(Globals.players[playerIndex-1].isKeyboardPlayer):
+		var move_horz: float = Input.get_action_strength("move_right_KB") - Input.get_action_strength("move_left_KB")
+		var move_vert: float = Input.get_action_strength("move_down_KB") - Input.get_action_strength("move_up_KB")
+		moveDirection = Vector2(move_horz, move_vert).normalized()
+		
+		lookDirection = (get_parent().global_position - get_parent().get_global_mouse_position()).normalized()
 	
-	var look_horz: float = Input.get_action_strength("right_stick_right_p" + str(deviceIndex)) - Input.get_action_strength("right_stick_left_p" + str(deviceIndex))
-	var look_vert: float = Input.get_action_strength("right_stick_up_p" + str(deviceIndex)) - Input.get_action_strength("right_stick_down_p" + str(deviceIndex))
-	lookDirection = Vector2(look_horz, look_vert).normalized()
+		aPressed = Input.is_action_pressed("a_KB")
+		bPressed = Input.is_action_pressed("b_KB")
+	else:
+		var move_horz: float = Input.get_action_strength("move_right_p" + str(deviceIndex)) - Input.get_action_strength("move_left_p" + str(deviceIndex))
+		var move_vert: float = Input.get_action_strength("move_down_p" + str(deviceIndex)) - Input.get_action_strength("move_up_p" + str(deviceIndex))
+		moveDirection = Vector2(move_horz, move_vert).normalized()
 	
-	aPressed = Input.is_action_pressed("a_p" + str(deviceIndex))
-	bPressed = Input.is_action_pressed("b_p" + str(deviceIndex))
+		var look_horz: float = Input.get_action_strength("right_stick_right_p" + str(deviceIndex)) - Input.get_action_strength("right_stick_left_p" + str(deviceIndex))
+		var look_vert: float = Input.get_action_strength("right_stick_up_p" + str(deviceIndex)) - Input.get_action_strength("right_stick_down_p" + str(deviceIndex))
+		lookDirection = Vector2(look_horz, look_vert).normalized()
+	
+		aPressed = Input.is_action_pressed("a_p" + str(deviceIndex))
+		bPressed = Input.is_action_pressed("b_p" + str(deviceIndex))

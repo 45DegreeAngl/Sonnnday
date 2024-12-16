@@ -1,14 +1,22 @@
 extends Node
 
 class_name globals
-var level1 : PackedScene = preload("res://General/Levels/level_1.tscn")
+enum InputDevice {KEYBOARD, CONTROLLER0, CONTROLLER1, CONTROLLER2, CONTROLLER3}
 
 var players : Array
 
-#takes player num as 1-4
-func get_player_from_device(deviceIdx: int) -> player_data:
+#gets player from input device
+func get_player_from_device(deviceIdx: InputDevice) -> player_data:
 	for player in players:
-		if player.deviceIndex == deviceIdx:
+		if player.isKeyboardPlayer && deviceIdx == InputDevice.KEYBOARD:
+			return player
+		if player.deviceIndex == 0 && deviceIdx == InputDevice.CONTROLLER0:
+			return player
+		if player.deviceIndex == 1 && deviceIdx == InputDevice.CONTROLLER1:
+			return player
+		if player.deviceIndex == 2 && deviceIdx == InputDevice.CONTROLLER2:
+			return player
+		if player.deviceIndex == 3 && deviceIdx == InputDevice.CONTROLLER3:
 			return player
 	return null
 	

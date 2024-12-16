@@ -16,15 +16,20 @@ func _process(delta: float) -> void:
 		label.visible = true
 	
 func _input(event: InputEvent) -> void:
+	if(Input.is_action_pressed("a_KB")):
+		if(not Globals.get_player_from_device(Globals.InputDevice.KEYBOARD)):
+			var playerdata = player_data.create(-1)
+			playerdata.isKeyboardPlayer = true
+			Globals.players.append(playerdata)
 	if(Input.is_action_pressed("a_p1")):
-		if(not Globals.get_player_from_device(0)):
+		if(not Globals.get_player_from_device(Globals.InputDevice.CONTROLLER0)):
 			Globals.players.append(player_data.create(0))
 	if(Input.is_action_pressed("a_p2")):
-		if(not Globals.get_player_from_device(1)):
+		if(not Globals.get_player_from_device(Globals.InputDevice.CONTROLLER1)):
 			Globals.players.append(player_data.create(1))
 	if(Input.is_action_pressed("a_p3")):
-		if(not Globals.get_player_from_device(2)):
+		if(not Globals.get_player_from_device(Globals.InputDevice.CONTROLLER2)):
 			Globals.players.append(player_data.create(2))
 	if(Input.is_action_pressed("a_p4")):
-		if(not Globals.get_player_from_device(3)):
+		if(not Globals.get_player_from_device(Globals.InputDevice.CONTROLLER3)):
 			Globals.players.append(player_data.create(3))

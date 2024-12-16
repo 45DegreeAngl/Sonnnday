@@ -39,7 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[center][rainbow]Press A to join![/rainbow][/center]"
+text = "[center][rainbow]Press A or Space Bar to join![/rainbow][/center]"
 fit_content = true
 
 [node name="PlayerLabels" type="VBoxContainer" parent="Main Menu"]
