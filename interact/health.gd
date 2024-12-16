@@ -1,7 +1,7 @@
 extends Node
 class_name Health
 
-@export var max_health := 30.0
+@export var max_health := 100.0
 var health : float
 var invuln : bool
 
