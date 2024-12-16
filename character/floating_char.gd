@@ -37,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 			velocity.y = move_toward(velocity.y, 0, SPEED/STOP_FACTOR)
 	
 	#apply dash
-	if inputManager.leftTriggerPressed && can_dash:
+	if inputManager.leftTriggerJustPressed && can_dash:
 		current_dashes -= 1
 		velocity += inputManager.lookDirection*DASH
 		dash_timer.start()
