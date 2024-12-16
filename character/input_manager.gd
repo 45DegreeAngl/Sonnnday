@@ -32,13 +32,9 @@ func _process(delta: float) -> void:
 		aPressed = Input.is_action_pressed("a_KB")
 		bPressed = Input.is_action_pressed("b_KB")
 	else:
-		var move_horz: float = Input.get_action_strength("move_right_p" + str(deviceIndex)) - Input.get_action_strength("move_left_p" + str(deviceIndex))
-		var move_vert: float = Input.get_action_strength("move_down_p" + str(deviceIndex)) - Input.get_action_strength("move_up_p" + str(deviceIndex))
-		moveDirection = Vector2(move_horz, move_vert).normalized()
+		moveDirection = Input.get_vector("move_left_p" + str(deviceIndex), "move_right_p" + str(deviceIndex), "move_up_p" + str(deviceIndex), "move_down_p" + str(deviceIndex)).normalized()
 	
-		var look_horz: float = Input.get_action_strength("right_stick_right_p" + str(deviceIndex)) - Input.get_action_strength("right_stick_left_p" + str(deviceIndex))
-		var look_vert: float = Input.get_action_strength("right_stick_down_p" + str(deviceIndex)) - Input.get_action_strength("right_stick_up_p" + str(deviceIndex))
-		var desiredLookDirection = Vector2(look_horz, look_vert).normalized()
+		var desiredLookDirection = Input.get_vector("right_stick_left_p" + str(deviceIndex), "right_stick_right_p" + str(deviceIndex), "right_stick_up_p" + str(deviceIndex), "right_stick_down_p" + str(deviceIndex)).normalized()
 		if desiredLookDirection != Vector2.ZERO:
 			lookDirection = desiredLookDirection
 	
