@@ -57,6 +57,7 @@ func _on_confirm_pressed() -> void:
 			power_is_upgrade = true
 	if power_is_upgrade == false:
 		var power_dupe = selected_power.duplicate()
+		power_dupe.level = 1
 		Globals.get_child(current_player-1).add_child(power_dupe)
 		#power_dupe.reparent(Globals.get_child(current_player-1))
 	if current_player != Globals.players.size():

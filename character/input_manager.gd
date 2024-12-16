@@ -8,6 +8,7 @@ var moveDirection: Vector2 = Vector2.ZERO
 var lookDirection: Vector2 = Vector2.ZERO
 var aPressed: bool = false
 var bPressed: bool = false
+var leftTriggerPressed: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,3 +45,4 @@ func _process(delta: float) -> void:
 	
 		aPressed = Input.is_action_pressed("a_p" + str(deviceIndex))
 		bPressed = Input.is_action_pressed("b_p" + str(deviceIndex))
+		leftTriggerPressed = Input.is_action_just_pressed("left_trigger_p"+str(deviceIndex))
