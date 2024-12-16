@@ -5,10 +5,10 @@
 
 [node name="Power Select" type="Control" node_paths=PackedStringArray("power1_button", "power2_button", "power3_button", "confirm")]
 layout_mode = 3
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1920.0
-offset_bottom = -1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_e8juv")
 power1_button = NodePath("ColorRect/HBoxContainer/PanelContainer/Power1")
 power2_button = NodePath("ColorRect/HBoxContainer/PanelContainer2/Power2")

@@ -3,8 +3,10 @@ class_name RoundUpgrades
 var target
 var damage
 var level
+var upgrade_id
 @export var active : bool
 @export var picked : bool
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

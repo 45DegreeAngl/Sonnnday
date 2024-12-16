@@ -3,8 +3,12 @@ class_name DamageOnMove;
 @export var player : CharacterBody2D
 var timers = [Timer.new,Timer.new,Timer.new,Timer.new] #damage timers for each player
 
+func _init() -> void:
+	upgrade_id = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("yipee")
 	damage = 15
 	for timer in timers:
 		timer.wait_time = 1
