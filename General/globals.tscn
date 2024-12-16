@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://biwq83ad86p23"]
+
+[ext_resource type="Script" path="res://General/globals.gd" id="1_mmjhy"]
+[ext_resource type="Script" path="res://General/Playernums.gd" id="2_w6bmp"]
+
+[node name="globals" type="Node2D"]
+script = ExtResource("1_mmjhy")
+
+[node name="Player1" type="Node" parent="."]
+script = ExtResource("2_w6bmp")
+number = 1
+
+[node name="Player2" type="Node" parent="."]
+script = ExtResource("2_w6bmp")
+number = 2
+
+[node name="Player3" type="Node" parent="."]
+script = ExtResource("2_w6bmp")
+number = 3
+
+[node name="Player4" type="Node" parent="."]
+script = ExtResource("2_w6bmp")
+number = 4

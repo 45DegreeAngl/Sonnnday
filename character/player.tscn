@@ -13,9 +13,12 @@ radius = 32.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ta40"]
 radius = 14.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health", "dash_timer", "dash_recharge")]
+scale = Vector2(5, 5)
 script = ExtResource("1_k83ya")
 health = NodePath("Health")
+dash_timer = NodePath("DashTimer")
+dash_recharge = NodePath("DashRechargeTimer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.02, 0.02)
@@ -50,4 +53,13 @@ shape = SubResource("CircleShape2D_1ta40")
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("6_07v0m")
 
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="DashRechargeTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="HazardDelayTimer" to="Hurtbox" method="_on_hazard_delay_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="DashRechargeTimer" to="." method="_on_dash_recharge_timer_timeout"]

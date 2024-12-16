@@ -6,5 +6,6 @@
 script = ExtResource("1_6cbhp")
 scenes = {
 "level1": "res://General/Levels/level_1.tscn",
-"menu": "res://UI/main_menu.tscn"
+"menu": "res://UI/main_menu.tscn",
+"powerselect": "res://UI/power_select.tscn"
 }

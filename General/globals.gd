@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 class_name globals
 enum InputDevice {KEYBOARD, CONTROLLER0, CONTROLLER1, CONTROLLER2, CONTROLLER3}
