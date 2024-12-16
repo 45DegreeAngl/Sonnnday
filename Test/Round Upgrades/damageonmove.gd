@@ -1,7 +1,6 @@
 extends RoundUpgrades
 class_name DamageOnMove;
-@export var player : CharacterBody2D
-var timers = [Timer.new,Timer.new,Timer.new,Timer.new] #damage timers for each player
+var timers = [Timer.new(),Timer.new(),Timer.new(),Timer.new()] #damage timers for each player
 
 func _init() -> void:
 	upgrade_id = 0
@@ -14,8 +13,6 @@ func _ready() -> void:
 		timer.wait_time = 1
 		timer.one_shot = true
 		timer.start()
-	player = get_parent()
-
 func on_level_up() -> void:
 	level += 1
 
@@ -26,12 +23,14 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("move_down_p1") || Input.is_action_just_pressed("move_up_p1") || Input.is_action_just_pressed("move_left_p1") || Input.is_action_just_pressed("move_right_p1"):
 			target = Globals.get_player_from_device(0).player
 			if timers[0].time_left == 0:
+				print("ouch")
 				timers[0].start()
 				player.health.direct_damage(damage * level)
 			#checks if player two has moved then damages them
 		if Input.is_action_just_pressed("move_down_p2") || Input.is_action_just_pressed("move_up_p2") || Input.is_action_just_pressed("move_left_p2") || Input.is_action_just_pressed("move_right_p2"):
 			target = Globals.get_player_from_device(1).player
 			if timers[1].time_left == 0:
+				print("ouch")
 				timers[1].start()
 				player.health.direct_damage(damage * level)
 				#checks if player three has moved then damages them

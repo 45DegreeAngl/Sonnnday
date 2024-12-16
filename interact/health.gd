@@ -11,14 +11,14 @@ func _ready():
 
 func damage(attack : Attack):
 	if invuln == false:
-		health -= attack.attack_damage
+		health -= abs(attack.attack_damage)
 		
 		if health <= 0:
 			die()
 
 func direct_damage(dmg:float):
 	if invuln == false:
-		health -= dmg
+		health -= abs(dmg)
 		
 		if health <= 0:
 			die()

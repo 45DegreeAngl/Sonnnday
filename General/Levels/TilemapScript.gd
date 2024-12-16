@@ -13,7 +13,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	for playerAbilities in Globals.get_children():
 		for playerAbility in playerAbilities.get_children():
-			playerAbility.active = true
+			playerAbility.level_start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

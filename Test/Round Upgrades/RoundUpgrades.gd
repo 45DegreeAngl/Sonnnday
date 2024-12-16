@@ -4,10 +4,13 @@ var target
 var damage
 var level
 var upgrade_id
+var player
 @export var active : bool
 @export var picked : bool
 
-
+func level_start() -> void:
+	active = true
+	player = Globals.get_player_from_index(get_parent().number)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
