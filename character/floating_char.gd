@@ -6,7 +6,7 @@ const SPEED = 300.0
 const STOP_FACTOR = 4
 var can_move : bool = true
 @onready var inputManager : InputManager = $InputManager
-
+@onready var sprite: Sprite2D = $"Sprite2D"
 
 func _physics_process(_delta: float) -> void:
 	if !is_multiplayer_authority():
@@ -19,13 +19,8 @@ func _physics_process(_delta: float) -> void:
 		return
 	# Get the input direction and handle the movement/deceleration.
 	var direction : Vector2 
-	#match control_type:
-		#0:
-			#direction = Input.get_vector("A", "D", "W", "S")
-		#1:
-			#direction = joy_pad_LStick
-	#direction = direction.normalized()
 	direction = inputManager.moveDirection
+	sprite.rotation = inputManager.lookDirection.angle() - PI/2
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.y = direction.y * SPEED
@@ -40,13 +35,3 @@ func update_can_move():
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		can_move = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
-var joy_pad_LStick:Vector2 = Vector2.ZERO
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventJoypadMotion:
-		match event.axis:
-			0:
-				joy_pad_LStick.x = event.axis_value
-			1:
-				joy_pad_LStick.y = event.axis_value
