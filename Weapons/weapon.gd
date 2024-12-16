@@ -6,6 +6,7 @@ var cur_active_weapon_indx : int = -1
 @export var char : CharacterBody2D
 var knockback_dir:Vector2
 @onready var atk_dir: RayCast2D = $atk_dir
+@onready var cooldown: Timer = $Cooldown
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,9 +22,9 @@ func _ready() -> void:
 ##re enable the selected weapon
 func change_weapon(index):
 	cur_active_weapon_indx = index
-	var temp_child = get_child(cur_active_weapon_indx)
-	if temp_child is Area2D:
-		temp_child.monitoring = true
+	cooldown.wait_time = weapons_array[cur_active_weapon_indx].cool_stat
+
+
 
 ##deal the damage to the other player
 func _on_victim_entered(area: Area2D) -> void:
@@ -38,3 +39,16 @@ func _on_victim_entered(area: Area2D) -> void:
 func update_atk_vector(balls:Vector2):
 	atk_dir.target_position = balls
 	rotation = balls.angle()
+
+func attack():
+	if !cooldown.is_stopped():
+		return
+	var temp_child = get_child(cur_active_weapon_indx)
+	if temp_child is Area2D:
+		temp_child.monitoring = true
+		cooldown.start()
+
+func _on_cooldown_timeout() -> void:
+	var temp_child = get_child(cur_active_weapon_indx)
+	if temp_child is Area2D:
+		temp_child.monitoring = true

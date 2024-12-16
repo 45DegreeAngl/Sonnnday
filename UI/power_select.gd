@@ -29,9 +29,6 @@ func random_powers() -> void:
 	power2 = power_holder_instance.get_child(0)
 	power3 = power_holder_instance.get_child(0)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_power_1_toggled(toggled_on: bool) -> void:

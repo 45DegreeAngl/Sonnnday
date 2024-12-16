@@ -10,12 +10,12 @@ func on_start_pressed() -> void:
 	$'/root/SceneManager'.change_scenes("powerselect")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	for n in range(1, Globals.players.size()+1):
 		var label = get_node("PlayerLabels/PlayerLabel"+str(n))
 		label.visible = true
 	
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if(Input.is_action_pressed("a_KB")):
 		if(not Globals.get_player_from_device(Globals.InputDevice.KEYBOARD)):
 			var playerdata = player_data.create(-1)

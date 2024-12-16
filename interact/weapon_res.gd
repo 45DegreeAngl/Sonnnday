@@ -5,6 +5,7 @@ class_name Weapon
 @export var wep_name:String
 @export var dmg_stat:float
 @export var knck_stat:float
+@export var cool_stat:float = 0.1
 var atk:Attack
 
 func _ready()->void:
