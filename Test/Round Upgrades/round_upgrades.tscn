@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmdk8bx3lu2c2"]
+[gd_scene load_steps=5 format=3 uid="uid://cmdk8bx3lu2c2"]
 
 [ext_resource type="Script" path="res://Test/Round Upgrades/RoundUpgrades.gd" id="1_kkuj0"]
 [ext_resource type="Script" path="res://Test/Round Upgrades/damageonmove.gd" id="2_1tr06"]
 [ext_resource type="Script" path="res://Test/Round Upgrades/dash_bomb.gd" id="3_nw13j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lqcqi"]
+radius = 63.0079
 
 [node name="RoundUpgrades" type="Node"]
 script = ExtResource("1_kkuj0")
@@ -10,5 +13,9 @@ script = ExtResource("1_kkuj0")
 [node name="DamageOnMove" type="Node" parent="."]
 script = ExtResource("2_1tr06")
 
-[node name="DashBomb" type="Node" parent="."]
+[node name="DashBomb" type="Node" parent="." node_paths=PackedStringArray("explosion_shape")]
 script = ExtResource("3_nw13j")
+explosion_shape = NodePath("ExplosionShape2D")
+
+[node name="ExplosionShape2D" type="CollisionShape2D" parent="DashBomb"]
+shape = SubResource("CircleShape2D_lqcqi")

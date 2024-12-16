@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func random_powers() -> void:
 	power1 = power_holder_instance.get_child(0)
-	power2 = power_holder_instance.get_child(0)
+	power2 = power_holder_instance.get_child(1)
 	power3 = power_holder_instance.get_child(0)
 
 
