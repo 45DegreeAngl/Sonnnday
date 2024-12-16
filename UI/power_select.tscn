@@ -56,7 +56,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 toggle_mode = true
 button_group = ExtResource("2_70gdb")
-text = "Test Button"
+text = "Dash Bomb"
 
 [node name="PanelContainer3" type="PanelContainer" parent="ColorRect/HBoxContainer"]
 layout_mode = 2

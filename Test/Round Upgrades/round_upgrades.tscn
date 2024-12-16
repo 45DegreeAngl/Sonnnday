@@ -13,8 +13,9 @@ script = ExtResource("1_kkuj0")
 [node name="DamageOnMove" type="Node" parent="."]
 script = ExtResource("2_1tr06")
 
-[node name="DashBomb" type="Node" parent="."]
+[node name="DashBomb" type="Node" parent="." node_paths=PackedStringArray("explosion_shape")]
 script = ExtResource("3_nw13j")
+explosion_shape = NodePath("ExplosionShape2D")
 
 [node name="ExplosionShape2D" type="CollisionShape2D" parent="DashBomb"]
 shape = SubResource("CircleShape2D_lqcqi")
