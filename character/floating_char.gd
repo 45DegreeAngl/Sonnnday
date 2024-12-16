@@ -28,29 +28,22 @@ func _physics_process(_delta: float) -> void:
 	var direction : Vector2 
 	direction = inputManager.moveDirection
 	sprite.rotation = inputManager.lookDirection.angle() - PI/2
+	
+	if dash_timer.is_stopped():
+		if direction:
+			velocity = velocity.move_toward(direction * SPEED, SPEED/STOP_FACTOR)
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED/STOP_FACTOR)
+			velocity.y = move_toward(velocity.y, 0, SPEED/STOP_FACTOR)
+	
+	#apply dash
 	if inputManager.leftTriggerPressed && can_dash:
 		current_dashes -= 1
-		dashing = true
+		velocity += inputManager.lookDirection*DASH
 		dash_timer.start()
+		dashing = true
 		if dash_recharge.is_stopped():
 			dash_recharge.start()
-		print("left trigger moment")
-	if dashing:
-		direction = inputManager.lookDirection
-		if direction:
-			velocity.x = (direction.x * DASH) + (inputManager.moveDirection.x * SPEED)
-			velocity.y = (direction.y * DASH) + (inputManager.moveDirection.y * SPEED)
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED/STOP_FACTOR)
-			velocity.y = move_toward(velocity.y, 0, SPEED/STOP_FACTOR)
-	else:
-		if direction:
-			velocity.x = direction.x * SPEED
-			velocity.y = direction.y * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED/STOP_FACTOR)
-			velocity.y = move_toward(velocity.y, 0, SPEED/STOP_FACTOR)
-
 	move_and_slide()
 
 ##updates the can_move value to the mouse captured

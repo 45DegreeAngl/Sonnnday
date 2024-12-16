@@ -14,7 +14,6 @@ radius = 32.0
 radius = 14.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health", "dash_timer", "dash_recharge")]
-scale = Vector2(5, 5)
 script = ExtResource("1_k83ya")
 health = NodePath("Health")
 dash_timer = NodePath("DashTimer")
