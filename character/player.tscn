@@ -13,6 +13,7 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ta40"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health")]
+scale = Vector2(5, 5)
 script = ExtResource("1_k83ya")
 health = NodePath("Health")
 
